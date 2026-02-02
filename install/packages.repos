@@ -10,11 +10,11 @@ repositories:
   hydra_ros:
     type: git
     url: git@github.com:ntnu-arl/reasoning_hydra_ros.git
-    version: clean
+    version: master
   kimera_pgmo:
     type: git
     url: git@github.com:ntnu-arl/kimera_pgmo.git
-    version: clean
+    version: master
   kimera_rpgo:
     type: git
     url: git@github.com:MIT-SPARK/Kimera-RPGO.git
@@ -30,11 +30,11 @@ repositories:
   reasoning_hydra:
     type: git
     url: git@github.com:ntnu-arl/reasoning_hydra.git
-    version: clean
+    version: master
   semantic_inference:
     type: git
     url: git@github.com:ntnu-arl/semantic_inference_ros.git
-    version: clean
+    version: master
   spark_dsg:
     type: git
     url: git@github.com:ntnu-arl/reasoning_Spark-DSG.git

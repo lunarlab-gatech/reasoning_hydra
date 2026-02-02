@@ -9,7 +9,7 @@
 ![License: MIT](https://img.shields.io/badge/License-BSD-green.svg)
 ![ROS Version](https://img.shields.io/badge/ROS-Noetic-blue)
 
-This package implements an **enhanced hierarchical 3D scene graph** based on [Hydra](https://github.com/MIT-SPARK/Hydra/tree/main), integrating open-vocabulary features for rooms and objects, and supporting object-relational reasoning.  
+This package implements an **enhanced hierarchical 3D scene graph** based on [Hydra](https://github.com/MIT-SPARK/Hydra/tree/main), integrating open-vocabulary features for rooms and objects, and supporting object-relational reasoning.
 
 We leverage a **Vision-Language Model (VLM)** to infer semantic relationships. Additionally, we introduce a **task reasoning module** that combines **Large Language Models (LLM)** and a VLM to interpret the scene graph’s semantic and relational information, enabling agents to reason about tasks and interact with their environment intelligently.
 
@@ -21,21 +21,21 @@ We leverage a **Vision-Language Model (VLM)** to infer semantic relationships. A
 
 ## Table of Contents
 
-- [Setup](#setup)  
-  - [General Requirements](#general-requirements)  
-  - [Building](#building)  
-  - [Python Environment for Semantics and Reasoning](#python-environment-for-semantics-and-reasoning)  
-- [Usage](#usage)  
-  - [Scene Graph Construction](#scene-graph-construction)  
-    - [Uhumans2 Dataset](#uhumans2)  
-    - [Replica Dataset](#replica)  
-    - [Habitat-Matterport 3D Semantics Dataset](#habitat-matterport-3d-semantics-dataset)  
-    - [Robot Deployment](#robot)  
-  - [Task Reasoning](#task-reasoning)  
-- [Citation](#citation)  
-- [License](#license)  
-- [Acknowledgements](#acknowledgements)  
-- [Contact](#contact)  
+- [Setup](#setup)
+  - [General Requirements](#general-requirements)
+  - [Building](#building)
+  - [Python Environment for Semantics and Reasoning](#python-environment-for-semantics-and-reasoning)
+- [Usage](#usage)
+  - [Scene Graph Construction](#scene-graph-construction)
+    - [Uhumans2 Dataset](#uhumans2)
+    - [Replica Dataset](#replica)
+    - [Habitat-Matterport 3D Semantics Dataset](#habitat-matterport-3d-semantics-dataset)
+    - [Robot Deployment](#robot)
+  - [Task Reasoning](#task-reasoning)
+- [Citation](#citation)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 ---
 
@@ -43,7 +43,7 @@ We leverage a **Vision-Language Model (VLM)** to infer semantic relationships. A
 
 ### General Requirements
 
-These instructions assume that `ros-noetic-desktop-full` is installed on **Ubuntu 20.04**.  
+These instructions assume that `ros-noetic-desktop-full` is installed on **Ubuntu 20.04**.
 
 Install general dependencies:
 
@@ -84,7 +84,7 @@ The system supports multiple datasets and online deployment on robots with GPU c
 
 #### Uhumans2
 
-Download rosbags from [Uhumans2 dataset](https://web.mit.edu/sparklab/datasets/uHumans2/).  
+Download rosbags from [Uhumans2 dataset](https://web.mit.edu/sparklab/datasets/uHumans2/).
 
 Start the scene graph:
 
@@ -100,7 +100,7 @@ rosbag play path/to/rosbag
 
 #### Replica
 
-Follow [NICE-SLAM instructions](https://github.com/cvg/nice-slam#replica-1) to download posed RGB-D data from Replica scenes.  
+Follow [NICE-SLAM instructions](https://github.com/cvg/nice-slam#replica-1) to download posed RGB-D data from Replica scenes.
 
 Run the scene graph:
 
@@ -116,7 +116,7 @@ roslaunch hydra_ros publish_replica.launch dataset_path:=<Path to your replica d
 
 #### Habitat-Matterport 3D Semantics Dataset
 
-Follow [HOV-SG instructions](https://github.com/hovsg/HOV-SG?tab=readme-ov-file#habitat-matterport-3d-semantics) (Step 2 can be skipped) to download posed RGB-D data from several scenes.  
+Follow [HOV-SG instructions](https://github.com/hovsg/HOV-SG?tab=readme-ov-file#habitat-matterport-3d-semantics) (Step 2 can be skipped) to download posed RGB-D data from several scenes.
 
 Run the scene graph:
 
@@ -132,13 +132,13 @@ To run the scene graph on your robot:
 - Robot must provide posed RGB-D data as `sensor_msgs/Image`
 - Pose must be provided via **TFs**
 
-Update [robot.launch](./hydra_ros/launch/robot.launch) with the correct TFs and camera topic names, then run:
+Update [robot.launch](https://github.com/ntnu-arl/reasoning_hydra_ros/blob/master/hydra_ros/launch/robot.launch) with the correct TFs and camera topic names, then run:
 
 ```bash
 roslaunch hydra_ros robot.launch
 ```
 
-We provide recorded data from experiments with an ANYMal robot. Download it [here](TODO).  
+We provide recorded data from experiments with an ANYMal robot. Download it [here](TODO).
 
 To use this data:
 
@@ -156,12 +156,12 @@ rosbag play <bag_to_play> --topics /tf /camera/aligned_depth_to_color/image_raw/
 
 ### Task Reasoning
 
-The **reasoning module** (VLM + LLMs) requires an **internet connection**.  
+The **reasoning module** (VLM + LLMs) requires an **internet connection**.
 
-- LLM queries are done via **OpenAI API**. 
+- LLM queries are done via **OpenAI API**.
 - A large VLM is hosted externally (setup instructions: [semantic_inference_ros](https://github.com/ntnu-arl/semantic_inference_ros))
 
-**IMPORTANT:** When using the reasoning module, set your OpenAI and FastAPI (see https://github.com/ntnu-arl/semantic_inference_ros) keys as environment variables before launching the ROS nodes: 
+**IMPORTANT:** When using the reasoning module, set your OpenAI and FastAPI (see https://github.com/ntnu-arl/semantic_inference_ros) keys as environment variables before launching the ROS nodes:
 ```bash
 export OPENAI_API_KEY=<Your OpenAI API Key>
 export FASTAPI_API_KEY=<Your server FastAPI Key>
@@ -210,7 +210,6 @@ This open-source release is based on work supported by the **European Commission
 
 For questions or support, reach out via [GitHub Issues](https://github.com/ntnu-arl/reasoning_hydra/issues) or contact the authors directly:
 
-- [Albert Gassol Puigjaner](mailto:albert.g.puigjaner@ntnu.no)  
-- [Angelos Zacharia](mailto:angelos.zacharia@ntnu.no)  
+- [Albert Gassol Puigjaner](mailto:albert.g.puigjaner@ntnu.no)
+- [Angelos Zacharia](mailto:angelos.zacharia@ntnu.no)
 - [Kostas Alexis](mailto:konstantinos.alexis@ntnu.no)
-
