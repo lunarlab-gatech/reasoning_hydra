@@ -171,7 +171,7 @@ Once the scene graph is constructed, either:
 
 1. Use the provided **rviz GUI** to interact with the service and visualize task reasoning results on the scene graph.
 
-2. Or call the [ROS service](https://github.com/ntnu-arl/semantic_inference_ros/blob/clean/semantic_inference_msgs/srv/NavigationPrompt.srv):  ```/semantic_inference/navigation_prompt_service/navigation_prompt```
+2. Or call the [ROS service](https://github.com/ntnu-arl/semantic_inference_ros/blob/master/semantic_inference_msgs/srv/NavigationPrompt.srv):  ```/semantic_inference/navigation_prompt_service/navigation_prompt```
 
 
 

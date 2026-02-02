@@ -9,11 +9,11 @@ repositories:
     version: reasoning_hydra
   hydra_ros:
     type: git
-    url: git@github.com:ntnu-arl/hydra_ros_private.git
+    url: git@github.com:ntnu-arl/reasoning_hydra_ros.git
     version: clean
   kimera_pgmo:
     type: git
-    url: git@github.com:ntnu-arl/kimera_pgmo_private.git
+    url: git@github.com:ntnu-arl/kimera_pgmo.git
     version: clean
   kimera_rpgo:
     type: git
@@ -29,15 +29,15 @@ repositories:
     version: master
   reasoning_hydra:
     type: git
-    url: git@github.com:ntnu-arl/reasoning_hydra_private.git
+    url: git@github.com:ntnu-arl/reasoning_hydra.git
     version: clean
   semantic_inference:
     type: git
-    url: git@github.com:ntnu-arl/semantic_inference_ros_private.git
+    url: git@github.com:ntnu-arl/semantic_inference_ros.git
     version: clean
   spark_dsg:
     type: git
-    url: git@github.com:ntnu-arl/reasoning_Spark-DSG_private.git
+    url: git@github.com:ntnu-arl/reasoning_Spark-DSG.git
     version: master
   spatial_hash:
     type: git
