@@ -5,6 +5,7 @@
   <a href="https://arxiv.org/abs/2602.02456"><img src="https://img.shields.io/badge/arXiv-78909C?style=flat-square" alt="arXiv"></a>
   <a href="https://huggingface.co/datasets/ntnu-arl/reasoning-graph-dataset"><img src="https://img.shields.io/badge/Dataset-1EE5B?style=flat-square" alt="Dataset"></a>
   <a href="https://youtu.be/as_oUaFT2hE"><img src="https://img.shields.io/badge/YouTube-E57373?style=flat-square" alt="YouTube"></a>
+  <a href="[https://youtu.be/as_oUaFT2hE](https://doi.org/10.5281/zenodo.18496204)"><img src="https://img.shields.io/badge/ZenodoDOI-73E5E5?style=flat-square" alt="Zenodo DOI"></a>
 </div>
 
 ![License: MIT](https://img.shields.io/badge/License-BSD-green.svg)
