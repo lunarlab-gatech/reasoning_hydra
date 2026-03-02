@@ -1,0 +1,1 @@
+docker start reasoning_hydra && docker exec -it reasoning_hydra /bin/bash

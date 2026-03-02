@@ -1,82 +1,65 @@
 # <div align="center">Relationship-Aware Hierarchical 3D Scene Graph</div>
 
-<div align="center">
-  <a href="https://ntnu-arl.github.io/reasoning_graph/"><img src="https://img.shields.io/badge/Homepage-1E88E5?style=flat-square" alt="Webpage"></a>
-  <a href="https://arxiv.org/abs/2602.02456"><img src="https://img.shields.io/badge/arXiv-78909C?style=flat-square" alt="arXiv"></a>
-  <a href="https://huggingface.co/datasets/ntnu-arl/reasoning-graph-dataset"><img src="https://img.shields.io/badge/Dataset-1EE5B?style=flat-square" alt="Dataset"></a>
-  <a href="https://youtu.be/as_oUaFT2hE"><img src="https://img.shields.io/badge/YouTube-E57373?style=flat-square" alt="YouTube"></a>
-  <a href="https://doi.org/10.5281/zenodo.18496204"><img src="https://img.shields.io/badge/ZenodoDOI-73E5E5?style=flat-square" alt="Zenodo DOI"></a>
-</div>
-
-![License: MIT](https://img.shields.io/badge/License-BSD-green.svg)
-![ROS Version](https://img.shields.io/badge/ROS-Noetic-blue)
-
 This package implements an **enhanced hierarchical 3D scene graph** based on [Hydra](https://github.com/MIT-SPARK/Hydra/tree/main), integrating open-vocabulary features for rooms and objects, and supporting object-relational reasoning.
 
 We leverage a **Vision-Language Model (VLM)** to infer semantic relationships. Additionally, we introduce a **task reasoning module** that combines **Large Language Models (LLM)** and a VLM to interpret the scene graph’s semantic and relational information, enabling agents to reason about tasks and interact with their environment intelligently.
 
-<div align="center">
-    <img src="assets/demo.png" alt="Demo Scene Graph">
-</div>
+## Installation
 
----
+### Docker Setup
 
-## Table of Contents
+Make sure to install:
+- [Docker](https://docs.docker.com/engine/install/ubuntu/)
 
-- [Setup](#setup)
-  - [General Requirements](#general-requirements)
-  - [Building](#building)
-  - [Python Environment for Semantics and Reasoning](#python-environment-for-semantics-and-reasoning)
-- [Usage](#usage)
-  - [Scene Graph Construction](#scene-graph-construction)
-    - [Uhumans2 Dataset](#uhumans2)
-    - [Replica Dataset](#replica)
-    - [Habitat-Matterport 3D Semantics Dataset](#habitat-matterport-3d-semantics-dataset)
-    - [Robot Deployment](#robot)
-  - [Task Reasoning](#task-reasoning)
-- [Citation](#citation)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
+Then, create the ros workspace with the `src` folder, and then navigate the terminal to that `src` folder. _Creating the workspace outside the docker helps you keep your files and changes within the workspace even if you delete the un-committed docker container._ Then, clone this repository into the `src` folder.
 
----
+After that, navigate to the `docker` directory. Log in to the user that you want the docker file to create in the container. Then, Edit the `enter_container.sh` script with the following paths:
+- `DATA_DIR=`: The directory where the HERCULES dataset is located
+- `WS_DIR=`: The directory of the ROS workspace
 
-## Setup
-
-### General Requirements
-
-These instructions assume that `ros-noetic-desktop-full` is installed on **Ubuntu 20.04**.
-
-Install general dependencies:
-
-```bash
-sudo apt install python3-rosdep python3-catkin-tools python3-vcstool
+Now, run the following commands:
+```
+build_container.sh
+run_container.sh
 ```
 
-### Building
+To re-enter the container, run the following command:
+```
+enter_container.sh
+```
+
+### Build
 
 Build the repository in **Release mode**:
 
 ```bash
-mkdir -p catkin_ws/src
-cd catkin_ws
 catkin init
 catkin config -DCMAKE_BUILD_TYPE=Release
-
 cd src
-git clone git@github.com:ntnu-arl/reasoning_hydra.git
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
 vcs import . < reasoning_hydra/install/packages.repos
+rosdep update
 rosdep install --from-paths . --ignore-src -r -y
-
 cd ..
 catkin build
 ```
 
 ### Python Environment for Semantics and Reasoning
 
-Follow the instructions in [semantic_inference_ros](https://github.com/ntnu-arl/semantic_inference_ros) to set up the Python environment required to run the semantic and reasoning models.
+Follow the instructions below (similar to instruction in [semantic_inference_ros](https://github.com/ntnu-arl/semantic_inference_ros)) to set up the Python environment required to run the semantic and reasoning models:
 
----
+```bash
+cd src/semantic_inference
+git submodule add --force git@github.com:ntnu-arl/DeepSeek-VL2.git semantic_inference_python/src/semantic_inference_python/models/deepseek 
+git submodule init
+git submodule update --recursive
+cd semantic_inference_python
+python3.8 -m venv --system-site-packages ros_semantics_env
+source ros_semantics_env/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -91,13 +74,15 @@ Download rosbags from [Uhumans2 dataset](https://web.mit.edu/sparklab/datasets/u
 Start the scene graph:
 
 ```bash
+source ~/reasoning_hydra_ws/devel/setup.bash
 roslaunch hydra_ros uhumans2.launch
 ```
 
 In a separate terminal, play the rosbag:
 
 ```bash
-rosbag play path/to/rosbag
+source ~/reasoning_hydra_ws/devel/setup.bash
+rosbag play uHumans2_office_s1_00h.bag
 ```
 
 #### Replica
