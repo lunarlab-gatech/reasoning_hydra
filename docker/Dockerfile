@@ -71,3 +71,4 @@ RUN sudo apt update
 
 # Install venv
 RUN sudo apt install python3.8-venv
+RUN sudo apt install -y python3-pip

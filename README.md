@@ -45,6 +45,21 @@ cd ..
 catkin build
 ```
 
+### robotdataprocess Installation
+
+Run the following commands to install the robotdataprocess repository:
+
+```bash
+cd ~/
+git clone git@github.com:lunarlab-gatech/robotdataprocess.git
+cd robotdataprocess
+git checkout develop
+python3 -m venv --system-site-packages robotdataprocess_env
+source robotdataprocess_env/bin/activate
+pip install -U pip
+pip install .
+```
+
 ### Python Environment for Semantics and Reasoning
 
 Follow the instructions below (similar to instruction in [semantic_inference_ros](https://github.com/ntnu-arl/semantic_inference_ros)) to set up the Python environment required to run the semantic and reasoning models:
@@ -60,6 +75,8 @@ source ros_semantics_env/bin/activate
 pip install -U pip
 pip install -r requirements.txt
 ```
+
+
 
 ## Usage
 
@@ -139,7 +156,22 @@ Then play one of the downloaded rosbags:
 rosbag play <bag_to_play> --topics /tf /camera/aligned_depth_to_color/image_raw/compressedDepth /camera/color/camera_info /camera/color/image_raw/compressed --clock
 ```
 
----
+#### Meronomy
+
+Start the scene graph:
+
+```bash
+source ~/reasoning_hydra_ws/devel/setup.bash
+roslaunch hydra_ros robot.launch height:=752 width:=480 sensor_max_range:=80.0 rgb_topic:=/Husky1/cam0/image_raw camera_info_topic:=/Husky1/cam0/camera_info depth_topic:=/Husky1/cam0/depth/image_raw rgb_info_topic:=/Husky1/cam0/depth/camera_info
+```
+
+In a separate terminal, play the rosbag:
+
+```bash
+source ~/reasoning_hydra_ws/devel/setup.bash
+source ~/robotdataprocess/robotdataprocess_env/bin/activate
+python3 ~/robotdataprocess/examples/Meronomy/publish/publish_data_ReasoningGraph.py --dataset_num V1.0 --robot_name Husky1
+```
 
 ### Task Reasoning
 
