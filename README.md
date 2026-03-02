@@ -162,7 +162,7 @@ Start the scene graph:
 
 ```bash
 source ~/reasoning_hydra_ws/devel/setup.bash
-roslaunch hydra_ros robot.launch height:=752 width:=480 sensor_max_range:=80.0 rgb_topic:=/Husky1/cam0/image_raw camera_info_topic:=/Husky1/cam0/camera_info depth_topic:=/Husky1/cam0/depth/image_raw rgb_info_topic:=/Husky1/cam0/depth/camera_info
+roslaunch hydra_ros robot.launch width:=752 height:=480 sensor_max_range:=80.0 rgb_topic:=/Husky1/cam0/image_raw camera_info_topic:=/Husky1/cam0/camera_info depth_topic:=/Husky1/cam0/depth/image_raw rgb_info_topic:=/Husky1/cam0/depth/camera_info
 ```
 
 In a separate terminal, play the rosbag:
