@@ -1,0 +1,39 @@
+---
+total_semantic_labels: 16
+dynamic_labels: []
+invalid_labels: []
+object_labels:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+surface_places_labels:
+  - 15
+label_names:
+  - {label: 0, name: canopy, name_descriptive: a canopy}
+  - {label: 1, name: wall, name_descriptive: a wall}
+  - {label: 2, name: trunk, name_descriptive: a trunk}
+  - {label: 3, name: ashcan, name_descriptive: an ashcan}
+  - {label: 4, name: handcart, name_descriptive: a handcart}
+  - {label: 5, name: door, name_descriptive: a door}
+  - {label: 6, name: window, name_descriptive: a window}
+  - {label: 7, name: umbrella, name_descriptive: an umbrella}
+  - {label: 8, name: bin, name_descriptive: a bin}
+  - {label: 9, name: box, name_descriptive: a box}
+  - {label: 10, name: building, name_descriptive: a building}
+  - {label: 11, name: roof, name_descriptive: a roof}
+  - {label: 12, name: crown, name_descriptive: a crown}
+  - {label: 13, name: tree, name_descriptive: a tree}
+  - {label: 14, name: parapet, name_descriptive: a parapet}
+  - {label: 15, name: floor, name_descriptive: a floor}

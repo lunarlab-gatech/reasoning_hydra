@@ -9,7 +9,7 @@ repositories:
     version: reasoning_hydra
   hydra_ros:
     type: git
-    url: git@github.com:ntnu-arl/reasoning_hydra_ros.git
+    url: git@github.com:lunarlab-gatech/reasoning_hydra_ros.git
     version: master
   kimera_pgmo:
     type: git
@@ -29,11 +29,11 @@ repositories:
     version: master
   reasoning_hydra:
     type: git
-    url: git@github.com:ntnu-arl/reasoning_hydra.git
+    url: git@github.com:lunarlab-gatech/reasoning_hydra.git
     version: master
   semantic_inference:
     type: git
-    url: git@github.com:ntnu-arl/semantic_inference_ros.git
+    url: git@github.com:lunarlab-gatech/semantic_inference_ros.git
     version: master
   spark_dsg:
     type: git

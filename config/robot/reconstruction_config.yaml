@@ -2,14 +2,20 @@
 map:
   voxels_per_side: 16
   voxel_size: 0.125
+  # TSDF truncation distance in meters; voxels farther than this from a surface are not updated
   truncation_distance: 0.35
-dense_representation_radius_m: 7.0
+# Radius in meters around the robot within which dense TSDF/mesh reconstruction is maintained
+dense_representation_radius_m: 16.0
 mesh:
   min_weight: 0.000001
+  # Number of threads for mesh integration; -1 uses all available CPU threads
   integrator_threads: -1
 tsdf:
+  # Logging verbosity level for the TSDF integrator (higher = more verbose)
   verbosity: 4
+  # Number of threads for TSDF integration; -1 uses all available CPU threads
   num_threads: -1
+  # Depth image interpolation method when projecting measurements into the TSDF volume
   interpolation_method: bilinear
   semantic_integrator:
     type: MLESemanticIntegrator
